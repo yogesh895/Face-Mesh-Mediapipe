@@ -4,6 +4,4 @@ numpy
 mediapipe
 matplotlib
 pandas
-time
-tempfile
 Pillow
