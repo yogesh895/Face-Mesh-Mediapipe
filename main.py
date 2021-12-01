@@ -85,7 +85,7 @@ if app_mode == 'About App':
     st.video('https://www.youtube.com/watch?v=0e3GPea1Tyg')
 
 elif app_mode == 'Run on Image':
-    drawing_spec = mp_drawing.DrawingSpec(thickness=2, circle_radius = 1)
+    drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius = 1)
     st.sidebar.markdown('---')
     st.markdown(
 
@@ -155,11 +155,11 @@ elif app_mode == 'Run on Video':
 
     st.set_option('deprecation.showfileUploaderEncoding', False)
     use_webcam = st.sidebar.button('Use Webcam')
-    record = st.sidebar.checkbox("Record Video")
-
-    if record:
-        st.checkbox("Recording", value = True)
-
+    # record = st.sidebar.checkbox("Record Video")
+    #
+    # if record:
+    #     st.checkbox("Recording", value = True)
+    #
     st.markdown(
 
         """
@@ -207,9 +207,9 @@ elif app_mode == 'Run on Video':
     height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps_input = int(vid.get(cv2.CAP_PROP_FPS))
 
-    #Recording Part
-    codec = cv2.VideoWriter_fourcc('M', 'J', 'P', 'G')
-    out = cv2.VideoWriter('output1.mp4', codec, fps_input, (width,height))
+    # #Recording Part
+    # codec = cv2.VideoWriter_fourcc('M', 'J', 'P', 'G')
+    # out = cv2.VideoWriter('output.mp4', codec, fps_input, (width,height))
 
     st.sidebar.text('Input Video')
     st.sidebar.video(tffile.name)
@@ -272,8 +272,8 @@ elif app_mode == 'Run on Video':
                 prevTime = currTime
 
 
-                if record:
-                    out.write(frame)
+                # if record:
+                #     out.write(frame)
 
                 #Dashboard
                 kpi1_text.write(f"<h1 style='text-align: center; color:red;'>{int(fps)}</h1>", unsafe_allow_html=True)
@@ -284,44 +284,10 @@ elif app_mode == 'Run on Video':
                 frame = image_resize(image = frame, width = 640)
                 stframe.image (frame, channels = 'BGR', use_column_width = True)
 
-    st.text('Video Processed')
-    output_video = open('output.mp4', 'rb')
-    out_bytes = output_video.read()
-    st.video(out_bytes)
+    # st.text('Video Processed')
+    # output_video = open('output.mp4', 'rb')
+    # out_bytes = output_video.read()
+    # st.video(out_bytes)
 
     vid.release()
-    out.release()
-
-
-
-
-
-
-
-
-
-
-
-    #
-    # face_count = 0
-    #
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # out.release()
